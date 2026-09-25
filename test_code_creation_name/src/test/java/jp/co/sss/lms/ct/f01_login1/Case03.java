@@ -47,9 +47,11 @@ public class Case03 {
 	@Order(2)
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
 	void test02() {
+		//正しいログインID
 		WebElement id = webDriver.findElement(By.id("loginId"));
 		id.clear();
 		id.sendKeys("StudentAA01");
+		//正しいパスワード
 		WebElement password = webDriver.findElement(By.id("password"));
 		password.clear();
 		password.sendKeys("StudentAA01test");
