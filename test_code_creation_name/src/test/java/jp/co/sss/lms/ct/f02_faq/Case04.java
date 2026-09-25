@@ -81,22 +81,23 @@ public class Case04 {
 	@Order(4)
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
 	void test04() {
-		//ウィンドウハンドルの追加
-				String originalWindow = webDriver.getWindowHandle();
+		//現在のタブIDの取得
+		String originalWindow = webDriver.getWindowHandle();
 				
-				WebElement faq = webDriver.findElement(By.linkText("よくある質問"));
-				faq.click();
+		WebElement faq = webDriver.findElement(By.linkText("よくある質問"));
+		faq.click();
+		
+		//新たなタブが開かれた際、新しいタブへ移動
+		for (String windowHandle : webDriver.getWindowHandles()) {
+		  if (!originalWindow.contentEquals(windowHandle)) {
+		  	webDriver.switchTo().window(windowHandle);
+		      break;
+		    }
+		}
 				
-				for (String windowHandle : webDriver.getWindowHandles()) {
-				    if (!originalWindow.contentEquals(windowHandle)) {
-				    	webDriver.switchTo().window(windowHandle);
-				        break;
-				    }
-				}
+		assertEquals("よくある質問 | LMS",webDriver.getTitle());
 				
-				assertEquals("よくある質問 | LMS",webDriver.getTitle());
-				
-				getEvidence(new Object(){});
+		getEvidence(new Object(){});
 	}
 
 }
