@@ -56,6 +56,9 @@ public class Case02 {
 		WebElement login = webDriver.findElement(By.cssSelector(".btn.btn-primary"));
 		login.click();
 		
+		WebElement errorMsg = webDriver.findElement(By.cssSelector(".help-inline.error"));
+		assertEquals("* ログインに失敗しました。", errorMsg.getText());
+		
 		getEvidence(new Object(){});
 	}
 
