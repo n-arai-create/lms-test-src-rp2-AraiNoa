@@ -47,9 +47,11 @@ public class Case02 {
 	@Order(2)
 	@DisplayName("テスト02 DBに登録されていないユーザーでログイン")
 	void test02() {
+		//正しいログインID
 		WebElement id = webDriver.findElement(By.id("loginId"));
 		id.clear();
 		id.sendKeys("StudentAA01");
+		//誤ったパスワード
 		WebElement password = webDriver.findElement(By.id("password"));
 		password.clear();
 		password.sendKeys("Student");
