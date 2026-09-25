@@ -56,6 +56,8 @@ public class Case03 {
 		WebElement login = webDriver.findElement(By.cssSelector(".btn.btn-primary"));
 		login.click();
 		
+		assertEquals("コース詳細 | LMS", webDriver.getTitle());
+		
 		getEvidence(new Object(){});
 	}
 
